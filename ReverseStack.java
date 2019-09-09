@@ -6,6 +6,7 @@ public class ReverseStack {
 
     public Stack<Integer> reverseStack (Stack <Integer> stack){
         if(stack == null) throw new IllegalArgumentException();
+        if(stack.isEmpty()) return stack;
         Integer temp = stack.pop();
         reverseStack(stack);
         insertAtBottom(stack, temp);
