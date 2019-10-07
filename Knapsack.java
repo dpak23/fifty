@@ -26,13 +26,19 @@ public class Knapsack {
         if(items == null || items.length == 0) return 0;
 
         int [][] cache = new int [items.length + 1][weight + 1];
+        //Set first row and column to 0
+        for(int i =0; i < cache[0].length;++i){
+            cache[0][i] = 0;
+        }
+        for(int i =0; i < cache.length;++i){
+            cache[i][0] = 0;
+        }
         for(int row = 1; row < items.length; ++row){
-            for (int col = 0; col <= weight; ++col){
-                if(items[row-1].weight > col) {
+            for (int col = 1; col <= weight; ++col){
+                if(items[row - 1].weight > col) {
                     cache[row][col] = cache[row-1][col];
-                }
-                else {
-                    cache[row][col] = Math.max(cache[row - 1][col], cache[row - 1][col - items[row].weight] + items[row].value);
+                } else {
+                    cache[row][col] = Math.max(cache[row - 1][col], cache[row - 1][col - items[row - 1].weight] + items[row - 1].value);
                 }
             }
         }
