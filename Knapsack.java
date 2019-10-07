@@ -32,7 +32,7 @@ public class Knapsack {
                     cache[i][j] = cache[i-1][j];
                 }
                 else {
-                    cache[i][j] = Math.max(cache[i - 1][j], cache[i - 1][j - items[i - 1].weight] + items[i-1].value);
+                    cache[i][j] = Math.max(cache[i - 1][j], cache[i - 1][j - items[i].weight] + items[i].value);
                 }
             }
         }
